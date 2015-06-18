@@ -15,5 +15,15 @@ class User < ActiveRecord::Base
                     uniqueness: {case_sensitive: false}
 has_secure_password
 
+def self.from_omniauth(auth)
+  #byebug
+  create! do |user|
+    user.email = auth["info"]["email"]
+    user.name = auth["info"]["first_name"]
+    user.password = auth.credentials.token
+    user.password_confirmation = auth.credentials.token
+  end
+end
+
 
 end
