@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -39,4 +39,13 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use debugger
 # gem 'debugger'
-gem "rspec-rails", :group => [:development, :test]
+
+gem 'rspec-rails', '3.1.0'
+ gem 'test-unit'
+ gem 'factory_girl_rails', '4.5.0'
+ gem 'guard-rspec', '4.5.0'
+ gem 'guard-spork', '2.1.0'
+ gem 'guard-livereload', '2.4.0'
+
+
+
