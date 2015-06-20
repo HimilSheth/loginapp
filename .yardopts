@@ -1,0 +1,6 @@
+--title "My API Documentation"
+--plugin restful
+--readme API_README
+--output-dir ./public/api
+app/models/**/*.rb
+app/controllers/**/*.rb

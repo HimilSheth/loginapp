@@ -14,3 +14,5 @@
 /log/*.log
 /tmp
 /vendor/cache/*
+.yardoc
+public/api

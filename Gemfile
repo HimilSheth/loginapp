@@ -5,7 +5,7 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+gem 'pg'
 
 
 # Gems used only for assets and not required
@@ -21,7 +21,6 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'test-unit'
 gem 'byebug'
 gem 'omniauth-facebook'
 
@@ -46,6 +45,10 @@ gem 'rspec-rails', '3.1.0'
  gem 'guard-rspec', '4.5.0'
  gem 'guard-spork', '2.1.0'
  gem 'guard-livereload', '2.4.0'
+ gem 'capybara'
+ gem 'launchy'
+
+
 
 
 
