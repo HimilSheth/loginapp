@@ -1,2 +1,8 @@
-<%= @user.name %> , <%= @user.email%>
+
+<% if logged_in? %>
+<%= current_user.name %> , <%= current_user.email%>
 <p><%= link_to "Log out", logout_path, method: "delete" %></p>
+<% else %>
+<p>"Please Login and Continue"</p>
+<li><%= link_to "Log in", login_path %></li>
+<% end %>

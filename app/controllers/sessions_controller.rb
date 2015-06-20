@@ -10,6 +10,8 @@
         redirect_to user
       else
       # byebug
+    #  flash.now[:danger] = 'Invalid email/password combination'
+
       render "new"
     end
   end
