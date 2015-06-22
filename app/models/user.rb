@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
                     format: {with: VALID_EMAIL_REGEX},
                     uniqueness: {case_sensitive: false}
 has_secure_password
+has_and_belongs_to_many :channels
+has_many :posts
 
 def self.from_omniauth(auth)
   #byebug

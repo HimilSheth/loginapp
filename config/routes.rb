@@ -1,6 +1,5 @@
 Loginapp::Application.routes.draw do
   get "fbsessions/new"
-
   get "sessions/new"
   get "users/new"
   get 'signup'  => 'users#new'
@@ -9,6 +8,9 @@ Loginapp::Application.routes.draw do
   delete 'logout' => 'sessions#destroy'
   match 'auth/facebook/callback', to: 'fbsessions#create'
   resources :users
+  resources :channels
+  resources :comments
+  resources :posts
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

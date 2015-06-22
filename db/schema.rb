@@ -11,7 +11,36 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150616064247) do
+ActiveRecord::Schema.define(:version => 20150621172219) do
+
+  create_table "channels", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "channels_users", :id => false, :force => true do |t|
+    t.integer "channel_id"
+    t.integer "user_id"
+  end
+
+  add_index "channels_users", ["channel_id", "user_id"], :name => "index_channels_users_on_channel_id_and_user_id"
+  add_index "channels_users", ["user_id"], :name => "index_channels_users_on_user_id"
+
+  create_table "comments", :force => true do |t|
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "post_id"
+  end
+
+  create_table "posts", :force => true do |t|
+    t.string   "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+    t.integer  "channel_id"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"
