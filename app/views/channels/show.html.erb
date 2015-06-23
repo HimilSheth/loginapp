@@ -4,6 +4,8 @@
   <% @posts.each do |post| %>
   <tr>
     <ul><%= link_to post.content, post %></ul>
+    <ul>Upvote:<%= post.upvote%></ul>
+    <br>
   </tr>
   <% end %>
 </table>
@@ -14,6 +16,8 @@
   <% @user_posts.each do |user_post| %>
   <tr>
     <ul><%= link_to user_post.content, user_post %></ul>
+    <ul>Upvote:<%= user_post.upvote%></ul>
+    <br>
   </tr>
   <% end %>
 </table>

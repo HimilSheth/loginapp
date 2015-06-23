@@ -18,4 +18,12 @@ class PostsController < ApplicationController
     @comments = @post.comments
     save_post(@post)
   end
+
+  def update
+    @post = Post.find(session[:post_id])
+    @post.upvote += 1
+    @post.save
+    redirect_to @post
+
+  end
 end

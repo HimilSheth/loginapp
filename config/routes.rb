@@ -15,6 +15,7 @@ Loginapp::Application.routes.draw do
   resources :channels
   resources :comments
   resources :posts
+  post 'upvote' => 'posts#update'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

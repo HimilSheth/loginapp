@@ -1,6 +1,6 @@
-<p>Post : <%= @post.content%></p>
+<p>Post : <%= @post.content%>     Upvote : <%=@post.upvote%></p>
 
-
+<p><%= link_to "Upvote", upvote_path, method: "post" %></p>
 
 <p>Comments</p>
 <table>

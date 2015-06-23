@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20150622132526) do
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
     t.integer  "channel_id"
-    t.integer  "upvote"
+    t.integer  "upvote", :default => 0
   end
 
   create_table "users", :force => true do |t|
