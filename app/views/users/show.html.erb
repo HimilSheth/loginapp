@@ -1,6 +1,39 @@
 
 <% if logged_in? %>
-<%= current_user.name %> , <%= current_user.email%>
+<%= current_user.name  %> ,<br> <%= current_user.email%>
+<br>
+<br><br><br>
+<p>"Available Channels"</p>
+<table>
+  <% @channels.each do |channel| %>
+  <tr>
+    <ul><%= link_to channel.name, channel %></ul>
+  </tr>
+  <% end %>
+</table>
+<br>
+<br>
+<br>
+
+
+ <%= form_for @channel do |f| %>
+  <% if @channel.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @channel.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p class="button"><%= f.submit %></p>
+<% end %>
+
 <p><%= link_to "Log out", logout_path, method: "delete" %></p>
 <% else %>
 <p>"Please Login and Continue"</p>

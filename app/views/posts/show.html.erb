@@ -1,0 +1,32 @@
+<p>Post : <%= @post.content%></p>
+
+
+
+<p>Comments</p>
+<table>
+  <% @comments.each do |comment| %>
+  <tr>
+    <li><%= comment.description  %></li>
+  </tr>
+  <% end %>
+</table>
+
+<%= form_for @comment do |f| %>
+  <% if @comment.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @comment.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p class="button"><%= f.submit %></p>
+<% end %>
+
+<p><%= link_to "Log out", logout_path, method: "delete" %></p>

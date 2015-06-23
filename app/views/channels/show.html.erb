@@ -1,0 +1,39 @@
+
+<p>All Post</p>
+<table>
+  <% @posts.each do |post| %>
+  <tr>
+    <ul><%= link_to post.content, post %></ul>
+  </tr>
+  <% end %>
+</table>
+
+
+<p>My Posts</p>
+<table>
+  <% @user_posts.each do |user_post| %>
+  <tr>
+    <ul><%= link_to user_post.content, user_post %></ul>
+  </tr>
+  <% end %>
+</table>
+
+<%= form_for @post do |f| %>
+  <% if @post.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @post.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label :content %><br />
+    <%= f.text_field :content %>
+  </p>
+  <p class="button"><%= f.submit %></p>
+<% end %>
+
+<p><%= link_to "Log out", logout_path, method: "delete" %></p>
