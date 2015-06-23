@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150622132526) do
+ActiveRecord::Schema.define(:version => 20150623152810) do
 
   create_table "channels", :force => true do |t|
     t.string   "name"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20150622132526) do
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
     t.integer  "channel_id"
-    t.integer  "upvote", :default => 0
+    t.integer  "upvote"
   end
 
   create_table "users", :force => true do |t|
@@ -52,5 +52,12 @@ ActiveRecord::Schema.define(:version => 20150622132526) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+
+  create_table "votes", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+    t.integer  "post_id"
+  end
 
 end

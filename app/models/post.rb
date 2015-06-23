@@ -4,6 +4,8 @@ class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :channel
   has_many :comments
+  has_many :upvoted_users, through: :votes, source: :user
+  has_many :votes, dependent: :destroy
 after_initialize :default_values
 
   private

@@ -4,11 +4,11 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(params[:post])
-    @user = User.find(session[:user_id])
+    current_user
     @channel = Channel.find(session[:channel_id])
-    @user.posts << @post
+    @current_user.posts << @post
     @channel.posts << @post
-    @channel.users << @users
+    @channel.users << @current_user
     redirect_to @channel
   end
 
@@ -21,8 +21,12 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(session[:post_id])
-    @post.upvote += 1
-    @post.save
+    current_user
+    if @post.votes.create(user_id: @current_user.id)
+      @post.upvote += 1
+      @post.save
+    end
+    flash[:notice] =  "Thank you for upvoting!"
     redirect_to @post
 
   end

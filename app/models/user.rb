@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   has_secure_password
   has_and_belongs_to_many :channels
   has_many :posts
+  has_many :votes, dependent: :destroy
+  has_many :upvoted_posts, through: :votes, source: :post
 
   def self.from_omniauth(auth)
     #byebug
