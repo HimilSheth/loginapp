@@ -9,10 +9,14 @@ class ChannelsController < ApplicationController
   end
 
   def show
-    @post = Post.new
-    @channel = Channel.find_by_id(params[:id])
-    @posts = @channel.posts
-    @user_posts = Channel.get_user_posts(@current_user,@channel)
-    save_channel_id(@channel)
+    if logged_in?
+      @post = Post.new
+      @channel = Channel.find_by_id(params[:id])
+      @posts = @channel.posts
+      @user_posts = Channel.get_user_posts(@current_user,@channel)
+      save_channel_id(@channel)
+    else
+      redirect_to login_path
+    end
   end
 end

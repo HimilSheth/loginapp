@@ -11,11 +11,15 @@ class PostsController < ApplicationController
   end
 
   def show
-    @comment = Comment.new
-    @post = Post.find(params[:id])
-    @comments = @post.comments
-    @channel = Channel.find(session[:channel_id])
-    save_post_id(@post)
+    if logged_in?
+      @comment = Comment.new
+      @post = Post.find(params[:id])
+      @comments = @post.comments
+      @channel = Channel.find(session[:channel_id])
+      save_post_id(@post)
+    else
+      redirect_to login_path
+    end
   end
 
   def update
