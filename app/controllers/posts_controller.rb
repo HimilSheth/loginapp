@@ -2,13 +2,11 @@ class PostsController < ApplicationController
   def new
   end
 
+
   def create
-    @post = Post.create(params[:post])
-    current_user
+    @post = Post.new(params[:post])
     @channel = Channel.find(session[:channel_id])
-    @current_user.posts << @post
-    @channel.posts << @post
-    @channel.users << @current_user
+    Post.create_associations(@current_user,@post,@channel)
     redirect_to @channel
   end
 
@@ -16,18 +14,13 @@ class PostsController < ApplicationController
     @comment = Comment.new
     @post = Post.find(params[:id])
     @comments = @post.comments
-    save_post(@post)
+    @channel = Channel.find(session[:channel_id])
+    save_post_id(@post)
   end
 
   def update
     @post = Post.find(session[:post_id])
-    current_user
-    if @post.votes.create(user_id: @current_user.id)
-      @post.upvote += 1
-      @post.save
-    end
-    flash[:notice] =  "Thank you for upvoting!"
+    Post.upvote_post_by_one(@post,@current_user)
     redirect_to @post
-
   end
 end

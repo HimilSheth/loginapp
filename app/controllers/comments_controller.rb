@@ -3,9 +3,9 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.create(params[:comment])
+    @comment = Comment.new(params[:comment])
     @post = Post.find(session[:post_id])
-    @post.comments << @comment
+    Comment.create_associations(@post,@comment)
     redirect_to @post
   end
 end

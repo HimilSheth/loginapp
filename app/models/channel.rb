@@ -5,5 +5,7 @@ class Channel < ActiveRecord::Base
   has_many :posts
   has_and_belongs_to_many :users
 
-
+  def self.get_user_posts(current_user, channel)
+    return current_user.posts.where(:channel_id => channel.id)
+  end
 end

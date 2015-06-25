@@ -5,17 +5,14 @@ class ChannelsController < ApplicationController
 
   def create
     @channel = Channel.create(params[:channel])
-    @user = User.find_by_id(session[:user_id])
-    redirect_to @user
+    redirect_to @current_user
   end
 
   def show
-   #  byebug
     @post = Post.new
     @channel = Channel.find_by_id(params[:id])
     @posts = @channel.posts
-    current_user
-    @user_posts = @current_user.posts.where(:channel_id => @channel.id)
-    save_channel(@channel)
+    @user_posts = Channel.get_user_posts(@current_user,@channel)
+    save_channel_id(@channel)
   end
 end
