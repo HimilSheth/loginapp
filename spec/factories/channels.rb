@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :channel do
-    name "MyString"
+    name "Test"
   end
 
 end
