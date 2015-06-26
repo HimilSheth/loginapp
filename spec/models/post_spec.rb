@@ -5,11 +5,7 @@ RSpec.describe Post, :type => :model do
     expect(Post.count).to eq 0
   end
   it "has one after adding one" do
-    Post.create(content: "test")
+    Post.create(content: "test", user_id: 1, channel_id: 1)
     expect(Post.count).to eq 1
-  end
-
-  it "has none after one was created in a previous example" do
-    expect(Post.count).to eq 0
   end
 end

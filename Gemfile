@@ -31,6 +31,8 @@ gem 'autoprefixer-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'seed_dump'
 
+gem 'yard'
+gem 'yard-restful'
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 

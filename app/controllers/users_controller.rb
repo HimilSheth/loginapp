@@ -1,9 +1,23 @@
+
+#
+# [class description]
+#
+# @author [himil]
+#
 class UsersController < ApplicationController
 
+  #
+  # [new description]
+  #
+  # @return [type] [description]
   def new
     @user = User.new
   end
 
+  #
+  # [show description]
+  #
+  # @return [type] [description]
   def show
     @user = User.find(params[:id])
     @channels = Channel.all
@@ -13,6 +27,10 @@ class UsersController < ApplicationController
     end
   end
 
+  #
+  # [create description]
+  #
+  # @return [type] [description]
   def create
     @user = User.new(params[:user])
     if @user.save
